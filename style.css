@@ -212,3 +212,9 @@ a{
         text-decoration: none; 
   text-align: center;
 }
+/* aqui deixa as mensagens de erro em vermelho */
+#mensagem.erro,
+#resultado.erro {
+    color: red;
+    font-weight: bold;
+}
