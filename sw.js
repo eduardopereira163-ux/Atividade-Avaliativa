@@ -1,15 +1,17 @@
-const CACHE_NAME = "clima-app-v1";
+const CACHE_NAME = "rotadireta-v1";
 
 const ARQUIVOS_PARA_CACHE = [
   "index.html",
+  "resultado.html",
   "style.css",
-  "script.js",
+  "index.js",
+  "resultado.js",
   "manifest.json",
+  "logo RotaDireta.png",
   "icons/icon-192.png",
   "icons/icon-512.png"
 ];
 
-// Guarda os arquivos no cache assim que o Service Worker é instalado
 self.addEventListener("install", (evento) => {
   evento.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
@@ -18,7 +20,6 @@ self.addEventListener("install", (evento) => {
   );
 });
 
-// Intercepta cada requisição da página
 self.addEventListener("fetch", (evento) => {
   evento.respondWith(
     caches.match(evento.request).then((respostaCache) => {

@@ -5,7 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RotaDireta</title>
+
     <link rel="stylesheet" href="style.css">
+
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="theme-color" content="#1a2a20">
+
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
 </head>
 
 <body>
@@ -36,6 +43,19 @@
     </footer>
     <!-- aqui fica o script -->
     <script src="index.js"></script>
+    <script>
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("sw.js")
+            .then(() => {
+                console.log("Service Worker registrado com sucesso!");
+            })
+            .catch((erro) => {
+                console.error("Erro ao registrar o Service Worker:", erro);
+            });
+    });
+}
+</script
 </body>
 
 </html>

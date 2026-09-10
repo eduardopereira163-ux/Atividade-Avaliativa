@@ -1,10 +1,10 @@
 {
-  "name": "Consulta do Clima",
-  "short_name": "Clima",
+  "name": "RotaDireta",
+  "short_name": "RotaDireta",
   "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#1f5c99",
+  "background_color": "#799482",
+  "theme_color": "#1a2a20",
   "icons": [
     {
       "src": "icons/icon-192.png",
