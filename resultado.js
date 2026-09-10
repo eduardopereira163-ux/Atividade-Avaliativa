@@ -59,10 +59,11 @@ async function consultarEndereco() {
 
     // CEP não encontrado
     if (dados.erro) {
-      resultado.textContent = "CEP não encontrado.";
-      resultado.classList.add("erro");
-      return;
-    }
+  resultado.textContent = "CEP não encontrado.";
+  resultado.style.color = "red";
+  resultado.style.fontWeight = "bold";
+  return;
+}
 
     if (!dados.localidade || !dados.uf || !dados.cep) {
       throw new Error("Resposta incompleta");
