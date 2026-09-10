@@ -215,6 +215,6 @@ a{
 /* aqui deixa as mensagens de erro em vermelho */
 #mensagem.erro,
 #resultado.erro {
-    color: red;
-    font-weight: bold;
+    color: #ff0000 !important;
+    font-weight: 700 !important;
 }

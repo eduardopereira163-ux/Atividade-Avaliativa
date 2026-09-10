@@ -1,3 +1,4 @@
+
 const CACHE_NAME = "rotadireta-v2";
 
 const ARQUIVOS_PARA_CACHE = [
