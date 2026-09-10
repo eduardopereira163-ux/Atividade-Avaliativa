@@ -7,7 +7,7 @@ const ARQUIVOS_PARA_CACHE = [
   "index.js",
   "resultado.js",
   "manifest.json",
-  "logo RotaDireta.png",
+  "logo.png",
   "icons/icon-192.png",
   "icons/icon-512.png"
 ];
