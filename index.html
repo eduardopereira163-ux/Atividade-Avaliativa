@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RotaDireta</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- aqui fica o cabeçalho -->
+    <header>
+        <img src="logo RotaDireta.png" alt="Logo da RotaDireta" width="50" height="50">
+        <h1>RotaDireta </h1>
+    </header>
+    <main>
+        <!-- aqui fica o título -->
+        <h1>RotaDireta</h1>
+        <!-- aqui fica o formulário de consulta -->
+        <form id="formConsulta">
+            <label for="cep">Digite o CEP</label>
+            <input id="cep" type="text" inputmode="numeric" maxlength="9" placeholder="01001-000" required>
+            <label for="cidade">Digite a Cidade</label>
+
+            <input id="cidade" type="text" placeholder="São Paulo" required>
+            <button type="submit">Buscar</button>
+        </form>
+        <!-- aqui fica a mensagem de resultado -->
+        <p id="mensagem" role="status" aria-live="polite"></p>
+    </main>
+    <!-- aqui fica o rodapé -->
+    <footer>
+        <p>© 2026 RotaDireta. Todos os direitos reservados.<br>
+            Desenvolvido por Eduardo Walter Pereira</p>
+    </footer>
+    <!-- aqui fica o script -->
+    <script src="index.js"></script>
+</body>
+
+</html>
