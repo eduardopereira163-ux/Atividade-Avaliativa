@@ -26,14 +26,17 @@ function mostrarCampo(rotulo, valor) {
 async function consultarEndereco() {
   linkMaps.hidden = true;
 
-  // Remove a mensagem de erro anterior
-  resultado.classList.remove("erro");
+  // Deixa o resultado com a aparência normal
+  resultado.style.color = "";
+  resultado.style.fontWeight = "";
 
   if (!/^\d{8}$/.test(cep) || !cidadeInformada.trim()) {
     resultado.textContent =
       "Dados inválidos. Volte e informe CEP e cidade.";
 
-    resultado.classList.add("erro");
+    resultado.style.color = "red";
+    resultado.style.fontWeight = "bold";
+
     return;
   }
 
@@ -58,12 +61,14 @@ async function consultarEndereco() {
     const dados = await resposta.json();
 
     // CEP não encontrado
-   if (dados.erro) {
-  resultado.textContent = "CEP não encontrado.";
-  resultado.style.color = "#ff0000";
-  resultado.style.fontWeight = "bold";
-  return;
-}
+    if (dados.erro) {
+      resultado.textContent = "CEP não encontrado.";
+
+      resultado.style.color = "red";
+      resultado.style.fontWeight = "bold";
+
+      return;
+    }
 
     if (!dados.localidade || !dados.uf || !dados.cep) {
       throw new Error("Resposta incompleta");
@@ -78,12 +83,15 @@ async function consultarEndereco() {
         `Este CEP pertence a ${dados.localidade}/${dados.uf}, ` +
         `e não a ${cidadeInformada}. Faça uma nova consulta.`;
 
-      resultado.classList.add("erro");
+      resultado.style.color = "red";
+      resultado.style.fontWeight = "bold";
+
       return;
     }
 
-    // Remove mensagem de erro
-    resultado.classList.remove("erro");
+    // Consulta encontrada: volta para a aparência normal
+    resultado.style.color = "";
+    resultado.style.fontWeight = "";
 
     resultado.replaceChildren();
 
@@ -135,12 +143,12 @@ async function consultarEndereco() {
         : "Não foi possível consultar. Verifique a conexão " +
           "e tente novamente.";
 
-    resultado.classList.add("erro");
+    resultado.style.color = "red";
+    resultado.style.fontWeight = "bold";
 
   } finally {
 
     clearTimeout(limite);
-
   }
 }
 
