@@ -1,5 +1,5 @@
 
-const CACHE_NAME = "rotadireta-v2";
+const CACHE_NAME = "rotadireta-v3";
 
 const ARQUIVOS_PARA_CACHE = [
   "index.html",

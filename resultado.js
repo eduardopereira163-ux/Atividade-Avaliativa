@@ -58,9 +58,9 @@ async function consultarEndereco() {
     const dados = await resposta.json();
 
     // CEP não encontrado
-    if (dados.erro) {
+   if (dados.erro) {
   resultado.textContent = "CEP não encontrado.";
-  resultado.style.color = "red";
+  resultado.style.color = "#ff0000";
   resultado.style.fontWeight = "bold";
   return;
 }
