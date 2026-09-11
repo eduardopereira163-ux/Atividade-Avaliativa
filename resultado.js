@@ -26,24 +26,21 @@ function mostrarCampo(rotulo, valor) {
 async function consultarEndereco() {
   linkMaps.hidden = true;
 
-  // Deixa o resultado com a aparência normal
+  // Limpa estados prévios de erro e estilos
+  resultado.classList.remove("erro");
   resultado.style.color = "";
   resultado.style.fontWeight = "";
 
   if (!/^\d{8}$/.test(cep) || !cidadeInformada.trim()) {
     resultado.textContent =
       "Dados inválidos. Volte e informe CEP e cidade.";
-
-    resultado.style.color = "red";
-    resultado.style.fontWeight = "bold";
-
+    resultado.classList.add("erro");
     return;
   }
 
   resultado.textContent = "Consultando endereço...";
 
   const controle = new AbortController();
-
   const limite = setTimeout(() => controle.abort(), 10000);
 
   try {
@@ -63,10 +60,7 @@ async function consultarEndereco() {
     // CEP não encontrado
     if (dados.erro) {
       resultado.textContent = "CEP não encontrado.";
-
-      resultado.style.color = "red";
-      resultado.style.fontWeight = "bold";
-
+      resultado.classList.add("erro");
       return;
     }
 
@@ -82,17 +76,12 @@ async function consultarEndereco() {
       resultado.textContent =
         `Este CEP pertence a ${dados.localidade}/${dados.uf}, ` +
         `e não a ${cidadeInformada}. Faça uma nova consulta.`;
-
-      resultado.style.color = "red";
-      resultado.style.fontWeight = "bold";
-
+      resultado.classList.add("erro");
       return;
     }
 
-    // Consulta encontrada: volta para a aparência normal
-    resultado.style.color = "";
-    resultado.style.fontWeight = "";
-
+    // Consulta encontrada com sucesso
+    resultado.classList.remove("erro");
     resultado.replaceChildren();
 
     const campos = [
@@ -136,18 +125,12 @@ async function consultarEndereco() {
     linkMaps.hidden = false;
 
   } catch (erro) {
-
     resultado.textContent =
       erro.name === "AbortError"
         ? "A consulta demorou demais. Tente novamente."
-        : "Não foi possível consultar. Verifique a conexão " +
-          "e tente novamente.";
-
-    resultado.style.color = "red";
-    resultado.style.fontWeight = "bold";
-
+        : "Não foi possível consultar. Verifique a conexão e tente novamente.";
+    resultado.classList.add("erro");
   } finally {
-
     clearTimeout(limite);
   }
 }

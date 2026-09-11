@@ -1,5 +1,4 @@
-
-const CACHE_NAME = "rotadireta-v3";
+const CACHE_NAME = "rotadireta-v4";
 
 const ARQUIVOS_PARA_CACHE = [
   "index.html",
@@ -18,6 +17,21 @@ self.addEventListener("install", (evento) => {
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(ARQUIVOS_PARA_CACHE);
     })
+  );
+  self.skipWaiting();
+});
+
+self.addEventListener("activate", (evento) => {
+  evento.waitUntil(
+    caches.keys().then((chaves) => {
+      return Promise.all(
+        chaves.map((chave) => {
+          if (chave !== CACHE_NAME) {
+            return caches.delete(chave);
+          }
+        })
+      );
+    }).then(() => self.clients.claim())
   );
 });
 
