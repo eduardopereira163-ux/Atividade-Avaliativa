@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RotaDireta</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="theme-color" content="#1a2a20">
+
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+</head>
+
+<body>
+    <!-- aqui fica o cabeçalho -->
+    <header>
+       <img src="logo.png" alt="Logo da RotaDireta" width="50" height="50">
+        <h1>RotaDireta </h1>
+    </header>
+    <main>
+        <!-- aqui fica o título -->
+        <h1>RotaDireta</h1>
+        <!-- aqui fica o formulário de consulta -->
+        <form id="formConsulta">
+            <label for="cep">Digite o CEP</label>
+            <input id="cep" type="text" inputmode="numeric" maxlength="9" placeholder="(ex: 01234-567 ou 01234567)" required>
+            <label for="cidade">Digite a Cidade</label>
+
+            <input id="cidade" type="text" placeholder="(ex: Lages)" required>
+            <button type="submit">Buscar</button>
+        </form>
+        <!-- aqui fica a mensagem de resultado -->
+        <p id="mensagem" role="status" aria-live="polite"></p>
+    </main>
+    <!-- aqui fica o rodapé -->
+    <footer>
+        <p>© 2026 RotaDireta. Todos os direitos reservados.<br>
+            Desenvolvido por Eduardo Walter Pereira</p>
+    </footer>
+    <!-- aqui fica o script -->
+    <script src="index.js"></script>
+    <script>
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("sw.js")
+            .then(() => {
+                console.log("Service Worker registrado com sucesso!");
+            })
+            .catch((erro) => {
+                console.error("Erro ao registrar o Service Worker:", erro);
+            });
+    });
+}
+</script>
+</body>
+
+</html>
